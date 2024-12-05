@@ -48,18 +48,6 @@ func part2() {
 	fmt.Println("Part 2:",numSafe)
 }
 
-func isSafe(nums []int) bool {
-	increasing := (nums[1] - nums[0]) > 0
-	for i := 1; i < len(nums); i++ {
-		diff := nums[i] - nums[i-1]
-		if diff == 0 || diff > 3 || -diff > 3 || diff > 0 != increasing {
-			return false
-		}
-	}
-
-	return true
-}
-
 func testSafe(nums []int) bool {
 	dir := (nums[1] - nums[0]) > 0
 	for i := 1; i < len(nums); i++ {
