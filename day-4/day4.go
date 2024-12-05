@@ -58,6 +58,8 @@ func main() {
 	//fmt.Println()
 	fmt.Println("word count",count)
 
+	part2()
+
 }
 
 func check_direction(grid [][]rune, dir [2]int, x int, y int, word string) bool {
