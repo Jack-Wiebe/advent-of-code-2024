@@ -69,6 +69,7 @@ func main() {
 	}
 
 	fmt.Println(output)
+	fmt.Println()
 	fmt.Println("part 1 count is:", count)
 }
 
