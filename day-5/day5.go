@@ -69,7 +69,7 @@ func main() {
 	}
 
 	fmt.Println(output)
-	fmt.Println(count)
+	fmt.Println("part 1 count is:", count)
 }
 
 func check_pages(page_map map[string][]string, key string, substring []string) bool {
