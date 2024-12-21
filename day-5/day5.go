@@ -62,7 +62,7 @@ func main() {
 
 		if(pass){
 			output = append(output, update)
-			foo,_ := strconv.Atoi(update[len(update)/2])
+			foo,_ := strconv.Atoi(update[(len(update)-1)/2])
 			count += foo
 		}
 
@@ -71,6 +71,9 @@ func main() {
 	fmt.Println(output)
 	fmt.Println()
 	fmt.Println("part 1 count is:", count)
+	fmt.Println()
+
+	part2()
 }
 
 func check_pages(page_map map[string][]string, key string, substring []string) bool {

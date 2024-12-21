@@ -29,11 +29,7 @@ func part2() {
 		input += scanner.Text()
 	}
 
-	re, err := regexp.Compile(pattern)
-	if err != nil {
-		fmt.Println("Error compiling regex:", err)
-		return
-	}
+	re, _ := regexp.Compile(pattern)
 	matches := re.FindAllStringSubmatch(input, -1)
 
 	for _, match := range matches{

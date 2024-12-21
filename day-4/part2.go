@@ -77,9 +77,6 @@ func check_diagonals(grid [][]rune, x int, y int) bool {
 		}
 	}
 
-	if check >= 2{
-		return true
-	}else{
-		return false
-	}
+	return check >= 2
+
 }
