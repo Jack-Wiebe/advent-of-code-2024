@@ -55,7 +55,7 @@ func main() {
 
 	count := 0
 	for _, row := range output{
-		//fmt.Println(string(row))
+		fmt.Println(string(row))
 		for _,char := range row{
 			if char == '*'{
 				count++
