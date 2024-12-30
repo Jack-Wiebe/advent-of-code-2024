@@ -20,8 +20,8 @@ func main() {
 		input = append(input, str)
 		fmt.Println(str)
 	}
+	fmt.Println()
 
-	var node_types []string
 	node_map := make(map[string][]Position)
 
 	for row, line := range input{
@@ -29,29 +29,48 @@ func main() {
 			if cell == "."{
 				continue
 			}
-			if !contains(node_types, cell){
-				node_types = append(node_types, cell)
-			}else{
-				node_map[cell] = append(node_map[cell], Position{x:row, y:col})
-			}
+			node_map[cell] = append(node_map[cell], Position{x:row, y:col})
 		}
 	}
 
-	fmt.Println(node_types)
-	fmt.Println(node_map)
+	for node_type := range node_map{
+		anti_node_list := findAntiNode(node_map[node_type])
+		for _, node := range anti_node_list{
+			if node.x >= len(input) || node.x < 0 || node.y >= len(input[0]) || node.y < 0 {
+				continue
+			}
+			input[node.x][node.y] = "#"
+		}
+	}
 
+	count:=0
+	for _,str := range input{
+		for _,char := range str{
+			if char == "#"{
+				count++
+			}
+		}
+		fmt.Println(str)
+	}
+
+	fmt.Println("total anti nodes:", count)
+
+}
+
+func findAntiNode(nodes []Position) []Position{
+	var anti_node_list []Position
+	for ind,node := range nodes{
+		for _,neighbour := range nodes[ind+1:]{
+			anit_vec := Position{x:node.x - neighbour.x, y:node.y-neighbour.y}
+			anit_node_alpha := Position{x:node.x + anit_vec.x,y:node.y+anit_vec.y}
+			anit_node_beta := Position{x:neighbour.x - anit_vec.x,y:neighbour.y-anit_vec.y}
+			anti_node_list = append(anti_node_list, anit_node_alpha, anit_node_beta)
+		}
+	}
+	return anti_node_list
 }
 
 type Position struct {
 	x int
 	y int
-}
-
-func contains[T comparable](input []T, value T) bool {
-	for _, v := range input {
-		if v == value {
-			return true
-		}
-	}
-	return false
 }
