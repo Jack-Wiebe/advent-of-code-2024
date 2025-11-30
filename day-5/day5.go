@@ -1,6 +1,7 @@
 package main
 
 import (
+	"advent-of-code-2024/utils"
 	"bufio"
 	"fmt"
 	"os"
@@ -80,7 +81,7 @@ func check_pages(page_map map[string][]string, key string, substring []string) b
 
 	check := true
 	for _,val := range substring{
-		if !contains(page_map[key], string(val)){
+		if !utils.Contains(page_map[key], string(val)){
 			check = false
 			break
 		}
@@ -89,11 +90,11 @@ func check_pages(page_map map[string][]string, key string, substring []string) b
 
 }
 
-func contains(slice []string, value string) bool {
-	for _, v := range slice {
-		if v == value {
-			return true
-		}
-	}
-	return false
-}
+// func contains(slice []string, value string) bool {
+// 	for _, v := range slice {
+// 		if v == value {
+// 			return true
+// 		}
+// 	}
+// 	return false
+// }

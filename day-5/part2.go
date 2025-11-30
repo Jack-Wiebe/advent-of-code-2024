@@ -1,6 +1,7 @@
 package main
 
 import (
+	"advent-of-code-2024/utils"
 	"bufio"
 	"fmt"
 	"os"
@@ -79,7 +80,7 @@ func fix_fail(update []string, page_map map[string][]string) int {
 
 	for ind,key := range update{
 		for i,val := range update[ind+1:]{
-			if !contains(page_map[key],val){
+			if !utils.Contains(page_map[key],val){
 				temp = append(temp, ind+i+1)
 				move_element(update, ind+i+1, ind+i)
 			}

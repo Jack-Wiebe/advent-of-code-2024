@@ -54,6 +54,7 @@ func main() {
 	}
 
 	fmt.Println("total anti nodes:", count)
+	//  part2()
 
 }
 
